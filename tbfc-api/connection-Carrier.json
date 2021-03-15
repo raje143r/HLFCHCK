@@ -1,0 +1,238 @@
+{
+  "name": "tfbccc",
+  "x-type": "hlfv1",
+  "x-commitTimeout": 300,
+  "version": "1.0.0",
+  "client": {
+    "organization": "Carrier",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300",
+          "eventHub": "300",
+          "eventReg": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "tfbcchannel": {
+        "orderers": [
+          "orderer.tfbc.com"
+        ],
+        "peers": {
+            "peer0.buyerbank.tfbc.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.sellerbank.tfbc.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.carrier.tfbc.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.buyer.tfbc.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.seller.tfbc.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+                  }
+                }
+            }
+        },  
+    "organizations": {      
+
+      "BuyerBank": {
+        "mspid": "BuyerBankMSP",
+        "peers": [
+            "peer0.buyerbank.tfbc.com"
+        ],
+        "certificateAuthorities": [
+          "ca.buyerbank.tfbc.com"
+        ]
+    },
+
+
+      "SellerBank": {
+        "mspid": "SellerBankMSP",
+        "peers": [
+            "peer0.sellerbank.tfbc.com"
+        ],
+        "certificateAuthorities": [
+          "ca.sellerbank.tfbc.com"
+        ]
+    },
+
+
+      "Carrier": {
+        "mspid": "CarrierMSP",
+        "peers": [
+            "peer0.carrier.tfbc.com"
+        ],
+        "certificateAuthorities": [
+          "ca.carrier.tfbc.com"
+        ]
+    },
+
+
+      "Buyer": {
+        "mspid": "BuyerMSP",
+        "peers": [
+            "peer0.buyer.tfbc.com"
+        ],
+        "certificateAuthorities": [
+          "ca.buyer.tfbc.com"
+        ]
+    },
+
+
+      "Seller": {
+        "mspid": "SellerMSP",
+        "peers": [
+            "peer0.seller.tfbc.com"
+        ],
+        "certificateAuthorities": [
+          "ca.seller.tfbc.com"
+        ]
+    }
+      },
+  "orderers":{
+    "orderer.tfbc.com": {
+      "url": "grpc://10.64.81.92:7050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer.tfbc.com",
+        "grpc.keepalive_time_ms": 600000,
+        "grpc.max_send_message_length": 15728640,
+        "grpc.max_receive_message_length": 15728640
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICNzCCAd2gAwIBAgIQQTsPmQJX5jW06q2PUOb6ljAKBggqhkjOPQQDAjBmMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzERMA8GA1UEChMIdGZiYy5jb20xFzAVBgNVBAMTDnRsc2NhLnRmYmMu\nY29tMB4XDTIxMDMwNzA2NTYwMFoXDTMxMDMwNTA2NTYwMFowZjELMAkGA1UEBhMC\nVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28x\nETAPBgNVBAoTCHRmYmMuY29tMRcwFQYDVQQDEw50bHNjYS50ZmJjLmNvbTBZMBMG\nByqGSM49AgEGCCqGSM49AwEHA0IABJllfml5sdVlQQUExpOonpT2XbuT9NxdnszX\nu1vFY0TmYQE7QyHVUAYVk11lwsZd4yRHbvXfWKywN3GKcD9Lh/CjbTBrMA4GA1Ud\nDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0T\nAQH/BAUwAwEB/zApBgNVHQ4EIgQgRJ8NvReIBwMREiaiAMmmRPTQ5TlBaBdsdOXi\niLoDw6MwCgYIKoZIzj0EAwIDSAAwRQIhAJYpSoEGxqKSz9t2+IUPsQyUkq1Kuo4b\nsnBUTlyD4JNoAiBPBMx6x0ouK6g7uNyP/C3epzXX2uVUAhD60+awTs4vlQ==\n-----END CERTIFICATE-----\n"
+      }
+    }
+  },
+  "peers": {
+
+     "peer0.buyerbank.tfbc.com": {
+      "url": "grpc://10.64.81.92:7051",
+      "eventUrl": "grpc://10.64.81.92:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.buyerbank.tfbc.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICYDCCAgagAwIBAgIRAPleAeAOxQEqotBNpi9ZlBQwCgYIKoZIzj0EAwIwejEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNvbTEhMB8GA1UEAxMY\ndGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMB4XDTIxMDMwNzA2NTYwMFoXDTMxMDMw\nNTA2NTYwMFowejELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAU\nBgNVBAcTDVNhbiBGcmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNv\nbTEhMB8GA1UEAxMYdGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMFkwEwYHKoZIzj0C\nAQYIKoZIzj0DAQcDQgAE7TARIDEhJFRGe7XjEu3wktD4Ay0iuoodP/bbm5X9/QC2\nGANb3oXE/cytxLq4azCadwaDTMKMduqibPBKvKzfmaNtMGswDgYDVR0PAQH/BAQD\nAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTAD\nAQH/MCkGA1UdDgQiBCDrkIiJ7FO4XYCpC+r8X+/c36JeusupmNwAitQY3x+u1DAK\nBggqhkjOPQQDAgNIADBFAiEA4BzKF/ScIYGX4ozBjIi9+bAJZrMJon4IpNnPtGgk\niMQCICpuN+2HbpSch1ji6b+mpA1IJUw8BgB1D1K4e2B2zM2e\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+
+     "peer0.sellerbank.tfbc.com": {
+      "url": "grpc://10.64.81.92:7051",
+      "eventUrl": "grpc://10.64.81.92:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.sellerbank.tfbc.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICYDCCAgagAwIBAgIRAPleAeAOxQEqotBNpi9ZlBQwCgYIKoZIzj0EAwIwejEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNvbTEhMB8GA1UEAxMY\ndGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMB4XDTIxMDMwNzA2NTYwMFoXDTMxMDMw\nNTA2NTYwMFowejELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAU\nBgNVBAcTDVNhbiBGcmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNv\nbTEhMB8GA1UEAxMYdGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMFkwEwYHKoZIzj0C\nAQYIKoZIzj0DAQcDQgAE7TARIDEhJFRGe7XjEu3wktD4Ay0iuoodP/bbm5X9/QC2\nGANb3oXE/cytxLq4azCadwaDTMKMduqibPBKvKzfmaNtMGswDgYDVR0PAQH/BAQD\nAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTAD\nAQH/MCkGA1UdDgQiBCDrkIiJ7FO4XYCpC+r8X+/c36JeusupmNwAitQY3x+u1DAK\nBggqhkjOPQQDAgNIADBFAiEA4BzKF/ScIYGX4ozBjIi9+bAJZrMJon4IpNnPtGgk\niMQCICpuN+2HbpSch1ji6b+mpA1IJUw8BgB1D1K4e2B2zM2e\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+
+     "peer0.carrier.tfbc.com": {
+      "url": "grpc://10.64.81.92:7051",
+      "eventUrl": "grpc://10.64.81.92:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.carrier.tfbc.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICYDCCAgagAwIBAgIRAPleAeAOxQEqotBNpi9ZlBQwCgYIKoZIzj0EAwIwejEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNvbTEhMB8GA1UEAxMY\ndGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMB4XDTIxMDMwNzA2NTYwMFoXDTMxMDMw\nNTA2NTYwMFowejELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAU\nBgNVBAcTDVNhbiBGcmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNv\nbTEhMB8GA1UEAxMYdGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMFkwEwYHKoZIzj0C\nAQYIKoZIzj0DAQcDQgAE7TARIDEhJFRGe7XjEu3wktD4Ay0iuoodP/bbm5X9/QC2\nGANb3oXE/cytxLq4azCadwaDTMKMduqibPBKvKzfmaNtMGswDgYDVR0PAQH/BAQD\nAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTAD\nAQH/MCkGA1UdDgQiBCDrkIiJ7FO4XYCpC+r8X+/c36JeusupmNwAitQY3x+u1DAK\nBggqhkjOPQQDAgNIADBFAiEA4BzKF/ScIYGX4ozBjIi9+bAJZrMJon4IpNnPtGgk\niMQCICpuN+2HbpSch1ji6b+mpA1IJUw8BgB1D1K4e2B2zM2e\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+
+     "peer0.buyer.tfbc.com": {
+      "url": "grpc://10.64.81.92:7051",
+      "eventUrl": "grpc://10.64.81.92:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.buyer.tfbc.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICYDCCAgagAwIBAgIRAPleAeAOxQEqotBNpi9ZlBQwCgYIKoZIzj0EAwIwejEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNvbTEhMB8GA1UEAxMY\ndGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMB4XDTIxMDMwNzA2NTYwMFoXDTMxMDMw\nNTA2NTYwMFowejELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAU\nBgNVBAcTDVNhbiBGcmFuY2lzY28xGzAZBgNVBAoTEmJ1eWVyYmFuay50ZmJjLmNv\nbTEhMB8GA1UEAxMYdGxzY2EuYnV5ZXJiYW5rLnRmYmMuY29tMFkwEwYHKoZIzj0C\nAQYIKoZIzj0DAQcDQgAE7TARIDEhJFRGe7XjEu3wktD4Ay0iuoodP/bbm5X9/QC2\nGANb3oXE/cytxLq4azCadwaDTMKMduqibPBKvKzfmaNtMGswDgYDVR0PAQH/BAQD\nAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTAD\nAQH/MCkGA1UdDgQiBCDrkIiJ7FO4XYCpC+r8X+/c36JeusupmNwAitQY3x+u1DAK\nBggqhkjOPQQDAgNIADBFAiEA4BzKF/ScIYGX4ozBjIi9+bAJZrMJon4IpNnPtGgk\niMQCICpuN+2HbpSch1ji6b+mpA1IJUw8BgB1D1K4e2B2zM2e\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+      
+      "peer0.seller.tfbc.com": {
+      "url": "grpc://10.64.81.92:8051",
+      "eventUrl": "grpc://10.64.81.92:8053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.seller.tfbc.com",
+        "hostnameOverride": "peer0.seller.tfbc.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICUjCCAfmgAwIBAgIQVP1acGwCgzMpjRyrTJMxYzAKBggqhkjOPQQDAjB0MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEYMBYGA1UEChMPc2VsbGVyLnRmYmMuY29tMR4wHAYDVQQDExV0bHNj\nYS5zZWxsZXIudGZiYy5jb20wHhcNMjEwMzA3MDY1NjAwWhcNMzEwMzA1MDY1NjAw\nWjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\nU2FuIEZyYW5jaXNjbzEYMBYGA1UEChMPc2VsbGVyLnRmYmMuY29tMR4wHAYDVQQD\nExV0bHNjYS5zZWxsZXIudGZiYy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAASuqve1eYGg7CvbW6o7xWvbJ0z/0x87a1DbL8ssszgdAAKJd6tpNsMV5n4fSTP1\nOv2bcECi+QuL05ybPrrwOCgPo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYw\nFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIE\nIAt0ldhpOQGj0EOAlVRaHEU/ZLu5sE+N0LajHE89Q2f3MAoGCCqGSM49BAMCA0cA\nMEQCIBuA28n69t7Bc6a5BZ0jjSr37GGcqxh+n2l27BxGiGeqAiAj7hCjct0FI6Km\nii1lZe9tw7Kz4hkJ4fTV9mvW8wQLLA==\n-----END CERTIFICATE-----\n"
+      }
+    }
+   },
+    "certificateAuthorities":{
+    "ca.buyerbank.tfbc.com": {
+      "url": "http://10.64.81.92:7054",
+      "caName": "ca.buyerbank.tfbc.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICWDCCAf+gAwIBAgIQDNpmQ6KA+koZ6RhkhVYTYjAKBggqhkjOPQQDAjB3MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEbMBkGA1UEChMSYnV5ZXJiYW5rLnRmYmMuY29tMR4wHAYDVQQDExVj\nYS5idXllcmJhbmsudGZiYy5jb20wHhcNMjEwMzA3MDY1NjAwWhcNMzEwMzA1MDY1\nNjAwWjB3MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEbMBkGA1UEChMSYnV5ZXJiYW5rLnRmYmMuY29tMR4w\nHAYDVQQDExVjYS5idXllcmJhbmsudGZiYy5jb20wWTATBgcqhkjOPQIBBggqhkjO\nPQMBBwNCAAQuusveV55Qp8W5qqT4ReovVvCpBP1c7AFSIINJcfLiPKQxApSkkPLq\nHeqhGGIXllmIF2Yf9HkehHx6Afku4czNo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYD\nVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYD\nVR0OBCIEILtUXFZvCvdZu1t2o2nK2b9i90vcoDxUkrssWXhEE4CbMAoGCCqGSM49\nBAMCA0cAMEQCIC1hZmmV0GjgbX9sXSou3XYIG+esX6naYzFuKemmargHAiAjRZr2\n27lGJVjjegCriIsmEYEhfzjChV8Uvs00uW18gQ==\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.sellerbank.tfbc.com": {
+      "url": "http://10.64.81.92:8054",
+      "caName": "ca.sellerbank.tfbc.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICXDCCAgOgAwIBAgIQCp3XzcWvKRBEcz45IHtpfzAKBggqhkjOPQQDAjB5MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEcMBoGA1UEChMTc2VsbGVyYmFuay50ZmJjLmNvbTEfMB0GA1UEAxMW\nY2Euc2VsbGVyYmFuay50ZmJjLmNvbTAeFw0yMTAzMDcwNjU2MDBaFw0zMTAzMDUw\nNjU2MDBaMHkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD\nVQQHEw1TYW4gRnJhbmNpc2NvMRwwGgYDVQQKExNzZWxsZXJiYW5rLnRmYmMuY29t\nMR8wHQYDVQQDExZjYS5zZWxsZXJiYW5rLnRmYmMuY29tMFkwEwYHKoZIzj0CAQYI\nKoZIzj0DAQcDQgAE5Y1HcZNAVmz2lsuLbTg4EwKz3WcVD6VXvo6KZXauKBrHrr5Y\nkH2qZCUz6oqS4MsVpolWqM8bAg/CuAGn1kz1KaNtMGswDgYDVR0PAQH/BAQDAgGm\nMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/\nMCkGA1UdDgQiBCABboE6GkrGa0oy7zpsnvLfUAdDnFpjjYW7kSbc9YgU+DAKBggq\nhkjOPQQDAgNHADBEAiBFRfwlN0e3XjIMrpvaae1z4QRRkk1K/7vxHNS4ri4mEgIg\nPJ2XVlDoGuceBTcBnjNpD8JRS5TuJbZUgHTwBH0bSfM=\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.carrier.tfbc.com": {
+      "url": "http://10.64.81.92:9054",
+      "caName": "ca.carrier.tfbc.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICUjCCAfigAwIBAgIRAKBmbxSuc7dfJUJx2H8+7YIwCgYIKoZIzj0EAwIwczEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGNhcnJpZXIudGZiYy5jb20xHDAaBgNVBAMTE2Nh\nLmNhcnJpZXIudGZiYy5jb20wHhcNMjEwMzA3MDY1NjAwWhcNMzEwMzA1MDY1NjAw\nWjBzMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\nU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQY2Fycmllci50ZmJjLmNvbTEcMBoGA1UE\nAxMTY2EuY2Fycmllci50ZmJjLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBIjqKhULY5esKYqRjjY8pdAgi/4NzXPYHONHh7rnwbSuCa7xFbpXl++Qe7Uz3qp7\nl7n+Yo82zLLSctuTrnZ0u/ajbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAU\nBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQg\nMj40sMsnNPqot2AeK66GobCuI6aFK8KnFN5EZFEUkIYwCgYIKoZIzj0EAwIDSAAw\nRQIhANmUwmyzJiVf84rpNEt6YqBlFRHNGAf6Wy3uZiCz3wQTAiB0l+ZdinazC0L/\nLV4nTBuTwuHcQSkvoY+eUOt51JDizA==\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.buyer.tfbc.com": {
+      "url": "http://10.64.81.92:10054",
+      "caName": "ca.buyer.tfbc.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICSDCCAe+gAwIBAgIQFgGVW0DFd8HAGuEq36qJljAKBggqhkjOPQQDAjBvMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEXMBUGA1UEChMOYnV5ZXIudGZiYy5jb20xGjAYBgNVBAMTEWNhLmJ1\neWVyLnRmYmMuY29tMB4XDTIxMDMwNzA2NTYwMFoXDTMxMDMwNTA2NTYwMFowbzEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFzAVBgNVBAoTDmJ1eWVyLnRmYmMuY29tMRowGAYDVQQDExFjYS5i\ndXllci50ZmJjLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABIN5AjaQBopv\nvT7BRHkr0CZmhSuueY1hQccMlvRRAWAizaMrNKoB22YL1fA90lo5ce5JFk13GXxU\nkl1tflqOQqCjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcD\nAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgQTf2AoTLJKRh\n79OoQjSVh5VjLCr64dIzCAd9nPrxBQowCgYIKoZIzj0EAwIDRwAwRAIgMNref+QO\nZwAsHnGWq1lbET+VGlZrmM+ldowPLP9V8XgCIDPR0VnfN5vNd7aXXHhYlGx2MiX1\nx8C+M9/HD39MSp+4\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.seller.tfbc.com": {
+      "url": "http://10.64.81.92:11054",
+      "caName": "ca.seller.tfbc.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICTDCCAfOgAwIBAgIQR8gpObG2Gnv6ouv4gQqBwDAKBggqhkjOPQQDAjBxMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEYMBYGA1UEChMPc2VsbGVyLnRmYmMuY29tMRswGQYDVQQDExJjYS5z\nZWxsZXIudGZiYy5jb20wHhcNMjEwMzA3MDY1NjAwWhcNMzEwMzA1MDY1NjAwWjBx\nMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2Fu\nIEZyYW5jaXNjbzEYMBYGA1UEChMPc2VsbGVyLnRmYmMuY29tMRswGQYDVQQDExJj\nYS5zZWxsZXIudGZiYy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQWGi9m\nPLnmAibw7/1rV4lRzUgoJmnZM1D40LkcZZNWXb3COuan7h4AEJuQW7rn04gMvalU\nUjVeHONmA9sRVPrXo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYB\nBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIIqfkZsm\nh+d617opSoNp+2pWp0VtIjwv71ZtXoAEAP84MAoGCCqGSM49BAMCA0cAMEQCIEO4\nSFJmkJ4Jb6yZJJN03wu+M3zGkyClU7doHIkLiTh4AiASIo+j3vMtww7SPp6inWUc\nfqEZ23xV6SML7PdE8UPGnQ==\n-----END CERTIFICATE-----\n"
+      }
+    }
+    }
+    }
+    

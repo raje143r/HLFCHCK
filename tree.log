@@ -1,0 +1,418 @@
+.
+├── bin
+│   ├── configtxgen
+│   ├── configtxlator
+│   ├── cryptogen
+│   ├── discover
+│   ├── fabric-ca-client
+│   ├── fabric-ca-server
+│   ├── idemixgen
+│   ├── orderer
+│   └── peer
+├── chaincode
+│   ├── hyperledger
+│   │   └── fabric
+│   │       └── peer
+│   │           ├── crypto
+│   │           └── tfbcchannel.block
+│   └── tfbc
+│       └── go
+│           ├── tfbc
+│           └── tfbc.go
+├── config
+│   ├── genesis.block
+│   └── tfbcchannel.tx
+├── configtx.yaml
+├── crypto-config
+│   ├── ordererOrganizations
+│   │   └── tfbc.com
+│   │       ├── ca
+│   │       │   ├── 145af93720e437785812c8acbce5593af8f59e103c3f89d53a691f2614870d6d_sk
+│   │       │   └── ca.tfbc.com-cert.pem
+│   │       ├── msp
+│   │       │   ├── admincerts
+│   │       │   │   └── Admin@tfbc.com-cert.pem
+│   │       │   ├── cacerts
+│   │       │   │   └── ca.tfbc.com-cert.pem
+│   │       │   └── tlscacerts
+│   │       │       └── tlsca.tfbc.com-cert.pem
+│   │       ├── orderers
+│   │       │   └── orderer.tfbc.com
+│   │       │       ├── msp
+│   │       │       │   ├── admincerts
+│   │       │       │   │   └── Admin@tfbc.com-cert.pem
+│   │       │       │   ├── cacerts
+│   │       │       │   │   └── ca.tfbc.com-cert.pem
+│   │       │       │   ├── keystore
+│   │       │       │   │   └── e5f4ba0b00a42542fc72885f92980287638cbbd1ed304bcb8be7aa8df39ea30f_sk
+│   │       │       │   ├── signcerts
+│   │       │       │   │   └── orderer.tfbc.com-cert.pem
+│   │       │       │   └── tlscacerts
+│   │       │       │       └── tlsca.tfbc.com-cert.pem
+│   │       │       └── tls
+│   │       │           ├── ca.crt
+│   │       │           ├── server.crt
+│   │       │           └── server.key
+│   │       ├── tlsca
+│   │       │   ├── 08bc07f422193f39ed62858aa428698406726879cef72e6bfaa62a4ea099ab49_sk
+│   │       │   └── tlsca.tfbc.com-cert.pem
+│   │       └── users
+│   │           └── Admin@tfbc.com
+│   │               ├── msp
+│   │               │   ├── admincerts
+│   │               │   │   └── Admin@tfbc.com-cert.pem
+│   │               │   ├── cacerts
+│   │               │   │   └── ca.tfbc.com-cert.pem
+│   │               │   ├── keystore
+│   │               │   │   └── 5b07fc5e8d616497883004382d96375bdc731ac3825f9b400a3d2d767ae50322_sk
+│   │               │   ├── signcerts
+│   │               │   │   └── Admin@tfbc.com-cert.pem
+│   │               │   └── tlscacerts
+│   │               │       └── tlsca.tfbc.com-cert.pem
+│   │               └── tls
+│   │                   ├── ca.crt
+│   │                   ├── client.crt
+│   │                   └── client.key
+│   └── peerOrganizations
+│       ├── buyerbank.tfbc.com
+│       │   ├── ca
+│       │   │   ├── ca.buyerbank.tfbc.com-cert.pem
+│       │   │   └── e6907e4c8c4b9e633d2752c9e222615c18f211c9373195c1b28ccfb00e8e57d7_sk
+│       │   ├── msp
+│       │   │   ├── admincerts
+│       │   │   │   └── Admin@buyerbank.tfbc.com-cert.pem
+│       │   │   ├── cacerts
+│       │   │   │   └── ca.buyerbank.tfbc.com-cert.pem
+│       │   │   └── tlscacerts
+│       │   │       └── tlsca.buyerbank.tfbc.com-cert.pem
+│       │   ├── peers
+│       │   │   └── peer0.buyerbank.tfbc.com
+│       │   │       ├── msp
+│       │   │       │   ├── admincerts
+│       │   │       │   │   └── Admin@buyerbank.tfbc.com-cert.pem
+│       │   │       │   ├── cacerts
+│       │   │       │   │   └── ca.buyerbank.tfbc.com-cert.pem
+│       │   │       │   ├── keystore
+│       │   │       │   │   └── f4db6c186754defd1dc2a3be17afa5bf036eadfe0f0ffdbf8fbd17cfafb89196_sk
+│       │   │       │   ├── signcerts
+│       │   │       │   │   └── peer0.buyerbank.tfbc.com-cert.pem
+│       │   │       │   └── tlscacerts
+│       │   │       │       └── tlsca.buyerbank.tfbc.com-cert.pem
+│       │   │       └── tls
+│       │   │           ├── ca.crt
+│       │   │           ├── server.crt
+│       │   │           └── server.key
+│       │   ├── tlsca
+│       │   │   ├── dec98b14beea5d1793194b4fecf2230241d3a5dd91cae1df901388785e33a699_sk
+│       │   │   └── tlsca.buyerbank.tfbc.com-cert.pem
+│       │   └── users
+│       │       ├── Admin@buyerbank.tfbc.com
+│       │       │   ├── msp
+│       │       │   │   ├── admincerts
+│       │       │   │   │   └── Admin@buyerbank.tfbc.com-cert.pem
+│       │       │   │   ├── cacerts
+│       │       │   │   │   └── ca.buyerbank.tfbc.com-cert.pem
+│       │       │   │   ├── keystore
+│       │       │   │   │   └── 84124e8ee6f2b6a0d3400c460304a0932ca53bf31a5e92f37abb7f2033af4a74_sk
+│       │       │   │   ├── signcerts
+│       │       │   │   │   └── Admin@buyerbank.tfbc.com-cert.pem
+│       │       │   │   └── tlscacerts
+│       │       │   │       └── tlsca.buyerbank.tfbc.com-cert.pem
+│       │       │   └── tls
+│       │       │       ├── ca.crt
+│       │       │       ├── client.crt
+│       │       │       └── client.key
+│       │       └── User1@buyerbank.tfbc.com
+│       │           ├── msp
+│       │           │   ├── admincerts
+│       │           │   │   └── User1@buyerbank.tfbc.com-cert.pem
+│       │           │   ├── cacerts
+│       │           │   │   └── ca.buyerbank.tfbc.com-cert.pem
+│       │           │   ├── keystore
+│       │           │   │   └── 426a83591d9415e65f1dc849f622c76dffa39a871c8089680a432fcde8e74660_sk
+│       │           │   ├── signcerts
+│       │           │   │   └── User1@buyerbank.tfbc.com-cert.pem
+│       │           │   └── tlscacerts
+│       │           │       └── tlsca.buyerbank.tfbc.com-cert.pem
+│       │           └── tls
+│       │               ├── ca.crt
+│       │               ├── client.crt
+│       │               └── client.key
+│       ├── buyer.tfbc.com
+│       │   ├── ca
+│       │   │   ├── a7bc38d938810959aa1788023d61ea5dd1dbba44cd4911131f411b4a8e11cd9c_sk
+│       │   │   └── ca.buyer.tfbc.com-cert.pem
+│       │   ├── msp
+│       │   │   ├── admincerts
+│       │   │   │   └── Admin@buyer.tfbc.com-cert.pem
+│       │   │   ├── cacerts
+│       │   │   │   └── ca.buyer.tfbc.com-cert.pem
+│       │   │   └── tlscacerts
+│       │   │       └── tlsca.buyer.tfbc.com-cert.pem
+│       │   ├── peers
+│       │   │   └── peer0.buyer.tfbc.com
+│       │   │       ├── msp
+│       │   │       │   ├── admincerts
+│       │   │       │   │   └── Admin@buyer.tfbc.com-cert.pem
+│       │   │       │   ├── cacerts
+│       │   │       │   │   └── ca.buyer.tfbc.com-cert.pem
+│       │   │       │   ├── keystore
+│       │   │       │   │   └── 9ac06bcab78b04912fdf479b6b0ba79c1333cea5290c4bf8513290a40e91fcbe_sk
+│       │   │       │   ├── signcerts
+│       │   │       │   │   └── peer0.buyer.tfbc.com-cert.pem
+│       │   │       │   └── tlscacerts
+│       │   │       │       └── tlsca.buyer.tfbc.com-cert.pem
+│       │   │       └── tls
+│       │   │           ├── ca.crt
+│       │   │           ├── server.crt
+│       │   │           └── server.key
+│       │   ├── tlsca
+│       │   │   ├── 200f5fbca12ac1b1dd32ef870d128141c750f82fddbe9fe559ed02eec4d2ef3a_sk
+│       │   │   └── tlsca.buyer.tfbc.com-cert.pem
+│       │   └── users
+│       │       ├── Admin@buyer.tfbc.com
+│       │       │   ├── msp
+│       │       │   │   ├── admincerts
+│       │       │   │   │   └── Admin@buyer.tfbc.com-cert.pem
+│       │       │   │   ├── cacerts
+│       │       │   │   │   └── ca.buyer.tfbc.com-cert.pem
+│       │       │   │   ├── keystore
+│       │       │   │   │   └── 9210a48199df6cf3c0c5042062af4774824e1d787a543aade8cdbf34f10e9217_sk
+│       │       │   │   ├── signcerts
+│       │       │   │   │   └── Admin@buyer.tfbc.com-cert.pem
+│       │       │   │   └── tlscacerts
+│       │       │   │       └── tlsca.buyer.tfbc.com-cert.pem
+│       │       │   └── tls
+│       │       │       ├── ca.crt
+│       │       │       ├── client.crt
+│       │       │       └── client.key
+│       │       └── User1@buyer.tfbc.com
+│       │           ├── msp
+│       │           │   ├── admincerts
+│       │           │   │   └── User1@buyer.tfbc.com-cert.pem
+│       │           │   ├── cacerts
+│       │           │   │   └── ca.buyer.tfbc.com-cert.pem
+│       │           │   ├── keystore
+│       │           │   │   └── 61153b14343459e9c7270409f2e9c3a14bc68600aa566731bf3e9543303b616d_sk
+│       │           │   ├── signcerts
+│       │           │   │   └── User1@buyer.tfbc.com-cert.pem
+│       │           │   └── tlscacerts
+│       │           │       └── tlsca.buyer.tfbc.com-cert.pem
+│       │           └── tls
+│       │               ├── ca.crt
+│       │               ├── client.crt
+│       │               └── client.key
+│       ├── carrier.tfbc.com
+│       │   ├── ca
+│       │   │   ├── 8e55a8ce17ebd092767e509ef8c5716b040587a3162dde5e47ec64658fee5732_sk
+│       │   │   └── ca.carrier.tfbc.com-cert.pem
+│       │   ├── msp
+│       │   │   ├── admincerts
+│       │   │   │   └── Admin@carrier.tfbc.com-cert.pem
+│       │   │   ├── cacerts
+│       │   │   │   └── ca.carrier.tfbc.com-cert.pem
+│       │   │   └── tlscacerts
+│       │   │       └── tlsca.carrier.tfbc.com-cert.pem
+│       │   ├── peers
+│       │   │   └── peer0.carrier.tfbc.com
+│       │   │       ├── msp
+│       │   │       │   ├── admincerts
+│       │   │       │   │   └── Admin@carrier.tfbc.com-cert.pem
+│       │   │       │   ├── cacerts
+│       │   │       │   │   └── ca.carrier.tfbc.com-cert.pem
+│       │   │       │   ├── keystore
+│       │   │       │   │   └── b57728c7bc65f61d0e0ce69542a8e22f562018fb9903dca29543ae9012a4603f_sk
+│       │   │       │   ├── signcerts
+│       │   │       │   │   └── peer0.carrier.tfbc.com-cert.pem
+│       │   │       │   └── tlscacerts
+│       │   │       │       └── tlsca.carrier.tfbc.com-cert.pem
+│       │   │       └── tls
+│       │   │           ├── ca.crt
+│       │   │           ├── server.crt
+│       │   │           └── server.key
+│       │   ├── tlsca
+│       │   │   ├── b2b0238aa86593e603522ba3bb0467cfc09c55710021b94c85e793e9b2fcb524_sk
+│       │   │   └── tlsca.carrier.tfbc.com-cert.pem
+│       │   └── users
+│       │       ├── Admin@carrier.tfbc.com
+│       │       │   ├── msp
+│       │       │   │   ├── admincerts
+│       │       │   │   │   └── Admin@carrier.tfbc.com-cert.pem
+│       │       │   │   ├── cacerts
+│       │       │   │   │   └── ca.carrier.tfbc.com-cert.pem
+│       │       │   │   ├── keystore
+│       │       │   │   │   └── 744be03f70509a3eee49aafcf0cdfa776a448329c0d7fd1f87504a1016bbeff4_sk
+│       │       │   │   ├── signcerts
+│       │       │   │   │   └── Admin@carrier.tfbc.com-cert.pem
+│       │       │   │   └── tlscacerts
+│       │       │   │       └── tlsca.carrier.tfbc.com-cert.pem
+│       │       │   └── tls
+│       │       │       ├── ca.crt
+│       │       │       ├── client.crt
+│       │       │       └── client.key
+│       │       └── User1@carrier.tfbc.com
+│       │           ├── msp
+│       │           │   ├── admincerts
+│       │           │   │   └── User1@carrier.tfbc.com-cert.pem
+│       │           │   ├── cacerts
+│       │           │   │   └── ca.carrier.tfbc.com-cert.pem
+│       │           │   ├── keystore
+│       │           │   │   └── 70cb34573fac0222404d214382c8664b55452b2a49892f074b6ff173b420f5e3_sk
+│       │           │   ├── signcerts
+│       │           │   │   └── User1@carrier.tfbc.com-cert.pem
+│       │           │   └── tlscacerts
+│       │           │       └── tlsca.carrier.tfbc.com-cert.pem
+│       │           └── tls
+│       │               ├── ca.crt
+│       │               ├── client.crt
+│       │               └── client.key
+│       ├── sellerbank.tfbc.com
+│       │   ├── ca
+│       │   │   ├── ca.sellerbank.tfbc.com-cert.pem
+│       │   │   └── fd82ade367c274d5ded79ef8d2367e9efa2965ef697fb2ed463c1198bf36c87b_sk
+│       │   ├── msp
+│       │   │   ├── admincerts
+│       │   │   │   └── Admin@sellerbank.tfbc.com-cert.pem
+│       │   │   ├── cacerts
+│       │   │   │   └── ca.sellerbank.tfbc.com-cert.pem
+│       │   │   └── tlscacerts
+│       │   │       └── tlsca.sellerbank.tfbc.com-cert.pem
+│       │   ├── peers
+│       │   │   └── peer0.sellerbank.tfbc.com
+│       │   │       ├── msp
+│       │   │       │   ├── admincerts
+│       │   │       │   │   └── Admin@sellerbank.tfbc.com-cert.pem
+│       │   │       │   ├── cacerts
+│       │   │       │   │   └── ca.sellerbank.tfbc.com-cert.pem
+│       │   │       │   ├── keystore
+│       │   │       │   │   └── 9e6335d2420297267f9d33f484231d1d5594a0723c18d986a6134f2f7b608c92_sk
+│       │   │       │   ├── signcerts
+│       │   │       │   │   └── peer0.sellerbank.tfbc.com-cert.pem
+│       │   │       │   └── tlscacerts
+│       │   │       │       └── tlsca.sellerbank.tfbc.com-cert.pem
+│       │   │       └── tls
+│       │   │           ├── ca.crt
+│       │   │           ├── server.crt
+│       │   │           └── server.key
+│       │   ├── tlsca
+│       │   │   ├── 3179fc7b2d582db11c7d2c342d3483303e9eac0a4a5596c0b4eed4c64dcc0e11_sk
+│       │   │   └── tlsca.sellerbank.tfbc.com-cert.pem
+│       │   └── users
+│       │       ├── Admin@sellerbank.tfbc.com
+│       │       │   ├── msp
+│       │       │   │   ├── admincerts
+│       │       │   │   │   └── Admin@sellerbank.tfbc.com-cert.pem
+│       │       │   │   ├── cacerts
+│       │       │   │   │   └── ca.sellerbank.tfbc.com-cert.pem
+│       │       │   │   ├── keystore
+│       │       │   │   │   └── 0d626f7ff9a2801dab9d6f1595f42ca63c2a48e9bd8632a7d6ef843697ac21a6_sk
+│       │       │   │   ├── signcerts
+│       │       │   │   │   └── Admin@sellerbank.tfbc.com-cert.pem
+│       │       │   │   └── tlscacerts
+│       │       │   │       └── tlsca.sellerbank.tfbc.com-cert.pem
+│       │       │   └── tls
+│       │       │       ├── ca.crt
+│       │       │       ├── client.crt
+│       │       │       └── client.key
+│       │       └── User1@sellerbank.tfbc.com
+│       │           ├── msp
+│       │           │   ├── admincerts
+│       │           │   │   └── User1@sellerbank.tfbc.com-cert.pem
+│       │           │   ├── cacerts
+│       │           │   │   └── ca.sellerbank.tfbc.com-cert.pem
+│       │           │   ├── keystore
+│       │           │   │   └── c10848a690956e940398a8a63eb68de8373daa388af883aee1aa17d5670bd1ae_sk
+│       │           │   ├── signcerts
+│       │           │   │   └── User1@sellerbank.tfbc.com-cert.pem
+│       │           │   └── tlscacerts
+│       │           │       └── tlsca.sellerbank.tfbc.com-cert.pem
+│       │           └── tls
+│       │               ├── ca.crt
+│       │               ├── client.crt
+│       │               └── client.key
+│       └── seller.tfbc.com
+│           ├── ca
+│           │   ├── 6a457b0a3136a05d05b25ad51612078e1fdf6f6840d949578252af34f87f0aa5_sk
+│           │   └── ca.seller.tfbc.com-cert.pem
+│           ├── msp
+│           │   ├── admincerts
+│           │   │   └── Admin@seller.tfbc.com-cert.pem
+│           │   ├── cacerts
+│           │   │   └── ca.seller.tfbc.com-cert.pem
+│           │   └── tlscacerts
+│           │       └── tlsca.seller.tfbc.com-cert.pem
+│           ├── peers
+│           │   └── peer0.seller.tfbc.com
+│           │       ├── msp
+│           │       │   ├── admincerts
+│           │       │   │   └── Admin@seller.tfbc.com-cert.pem
+│           │       │   ├── cacerts
+│           │       │   │   └── ca.seller.tfbc.com-cert.pem
+│           │       │   ├── keystore
+│           │       │   │   └── 655e09eec744b55f49226e2d48b9bd51d12a66e6a3c202d1c242b503ae77c660_sk
+│           │       │   ├── signcerts
+│           │       │   │   └── peer0.seller.tfbc.com-cert.pem
+│           │       │   └── tlscacerts
+│           │       │       └── tlsca.seller.tfbc.com-cert.pem
+│           │       └── tls
+│           │           ├── ca.crt
+│           │           ├── server.crt
+│           │           └── server.key
+│           ├── tlsca
+│           │   ├── 16e7cd0c1f1b234314bda2643e2894b6276a61df4e740015cc885724fcad7c9f_sk
+│           │   └── tlsca.seller.tfbc.com-cert.pem
+│           └── users
+│               ├── Admin@seller.tfbc.com
+│               │   ├── msp
+│               │   │   ├── admincerts
+│               │   │   │   └── Admin@seller.tfbc.com-cert.pem
+│               │   │   ├── cacerts
+│               │   │   │   └── ca.seller.tfbc.com-cert.pem
+│               │   │   ├── keystore
+│               │   │   │   └── 36649ddf2318b84d104c504da7771e86400e65e39f7103b15c2f3bba85f7a54f_sk
+│               │   │   ├── signcerts
+│               │   │   │   └── Admin@seller.tfbc.com-cert.pem
+│               │   │   └── tlscacerts
+│               │   │       └── tlsca.seller.tfbc.com-cert.pem
+│               │   └── tls
+│               │       ├── ca.crt
+│               │       ├── client.crt
+│               │       └── client.key
+│               └── User1@seller.tfbc.com
+│                   ├── msp
+│                   │   ├── admincerts
+│                   │   │   └── User1@seller.tfbc.com-cert.pem
+│                   │   ├── cacerts
+│                   │   │   └── ca.seller.tfbc.com-cert.pem
+│                   │   ├── keystore
+│                   │   │   └── c5c184f3bf06c854f2f18321a56ee0b1e9dab6be6bd068109714b306512264ea_sk
+│                   │   ├── signcerts
+│                   │   │   └── User1@seller.tfbc.com-cert.pem
+│                   │   └── tlscacerts
+│                   │       └── tlsca.seller.tfbc.com-cert.pem
+│                   └── tls
+│                       ├── ca.crt
+│                       ├── client.crt
+│                       └── client.key
+├── crypto-config.yaml
+├── docker-compose.yml
+├── generateCerts.sh
+├── setupChaincode.sh
+├── setupNetwork.sh
+├── start.sh
+├── stop.sh
+├── tbfc-api
+│   ├── app.js
+│   ├── generateCCP.sh
+│   ├── invoke.js
+│   ├── package.json
+│   ├── query.js
+│   ├── registerBankUser.js
+│   ├── registerBuyerUser.js
+│   ├── registerSellerUser.js
+│   ├── server.js
+│   ├── swagger.json
+│   └── TFBCController.js
+└── tree.log
+
+203 directories, 212 files
